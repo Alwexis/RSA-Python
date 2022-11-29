@@ -1,35 +1,24 @@
-def letraAAscii(M):
-    L=len(M)
-    N = [None]*L
-    for i in range(0,L,1):
-        N[i] = ord(M[i])
-    return N
+def charToAscii(M):
+    return [ord(i) for i in M]
 
-def asciiALetra(s):
-    n = ""
-    for x in s:
-        n += x
-    return n
+def asciiToChar(s):
+    return ''.join(s)
 
 def cifrarMensaje(M):
-    X = letraAAscii(M)
-    JC = [None]*len(X)
-    JCL = [None]*len(X)
-
-    for i in range(0, len(X), 1):
-        JC[i] = X[i] + 3
-        JCL[i] = chr(JC[i] % 255)
-    return asciiALetra(JCL)
+    X = charToAscii(M)
+    JC = JCL = []
+    for x in X:
+        JC.append(x + 3)
+        JCL.append(chr(JC[x] % 255))
+    return asciiToChar(JCL)
 
 def descifrarMensaje(M):
-    Y = letraAAscii(M)
-    DJC = [None] * len(Y)
-    DJCL = [None] * len(Y)
-
-    for i in range(0, len(Y), 1):
-        DJC[i] = Y[i] - 3
-        DJCL[i] = chr(DJC[i] % 255)
-    return asciiALetra(DJCL)
+    Y = charToAscii(M)
+    DJC = DJCL = []
+    for y in Y:
+        DJC.append(y - 3)
+        DJCL.append(chr(DJC[y] % 255))
+    return asciiToChar(DJCL)
 
 # Código Principal #
 mensaje_a_cifrar = input('Ingrese el mensaje a cifrar: ')
